@@ -2,6 +2,7 @@ const path = require("path");
 const { VueLoaderPlugin } = require("vue-loader");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // https://webpack.js.org/concepts/output/#multiple-entry-points
 
@@ -58,6 +59,7 @@ module.exports = {
       template: path.resolve(__dirname, "./src/template.html"),
       filename: "index.html",
       favicon: "./src/assets/favicon.ico"
-    })
+    }),
+    new BundleAnalyzerPlugin()
   ]
 };
