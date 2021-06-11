@@ -3,13 +3,24 @@ const { VueLoaderPlugin } = require("vue-loader");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
+// https://webpack.js.org/concepts/output/#multiple-entry-points
+
 module.exports = {
   mode: "production",
-  entry: "./src/main.js",
-  output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "distNew")
+  entry: {
+    app: "./src/feature-main/lending-main.vue",
+    map: "./src/feature-map/lending-map.vue",
+    products: "./src/feature-products/lending-products.vue"
   },
+  output: {
+    filename: "[name].js",
+    path: __dirname + "/distChunks"
+  },
+  // entry: "./src/main.js",
+  // output: {
+  //   filename: "main.js",
+  //   path: path.resolve(__dirname, "distNew")
+  // },
   module: {
     rules: [
       {
